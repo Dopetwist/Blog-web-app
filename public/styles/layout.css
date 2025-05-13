@@ -42,6 +42,19 @@ header .links a:hover {
     cursor: pointer;
 }
 
+section#blogs {
+    width: 90%;
+}
+
+.view-posts {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #menu-icon {
     display: none;
 }
@@ -261,7 +274,7 @@ form label {
 }
 
 .blogs-container {
-    width: 50%;
+    width: 60%;
     margin: auto;
 }
 

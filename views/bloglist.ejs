@@ -16,49 +16,51 @@
 
         <!-- Displaying each Blog Post's Contents -->
 
-        <div class="blogs-container">
-            <% for (let i = 0; i < blogs.length; i++) { %>
-                <div class="blog-card">
+        <section id="blogs">
+            <div class="blogs-container">
+                <% for (let i = 0; i < blogs.length; i++) { %>
+                    <div class="blog-card">
 
-                    <div class="span-con">
-                        <span> 
-                            <%= i + 1 %>
-                        </span> 
+                        <div class="span-con">
+                            <span> 
+                                <%= i + 1 %>
+                            </span> 
 
-                        <div class="the-title">
-                            <h2> <%= blogs[i].title %> </h2>
-                        </div>
-                    </div>
-
-                    <div class="descript">
-                        <p> <%= blogs[i].description?.slice(0, 280) %>
-                            <% if (blogs[i].description?.length > 280) { %>
-                                ... <a href="/details/<%= blogs[i].id %>">View More</a> 
-                            <% } %>
-                        </p> 
-                        
-                    </div>
-
-                    <div class="below-items">
-                        <div class="timestamp">
-                            <p>
-                                Posted on: <%= blogs[i].createdAt %>, <%= blogs[i].time %> %>
-                            </p>
+                            <div class="the-title">
+                                <h2> <%= blogs[i].title %> </h2>
+                            </div>
                         </div>
 
-                        <div class="buttons">
-                            <div class="bttns-container">
-                                <form action="/delete/<%= blogs[i].id %>" method="POST">
-                                    <button class="bttns del-btn">Delete</button>
-                                </form>
-        
-                                <a href="/edit/<%= blogs[i].id %>" class="bttns edit-btn">Edit</a>
+                        <div class="descript">
+                            <p> <%= blogs[i].description?.slice(0, 280) %>
+                                <% if (blogs[i].description?.length > 280) { %>
+                                    ... <a href="/details/<%= blogs[i].id %>">View More</a> 
+                                <% } %>
+                            </p> 
+                            
+                        </div>
+
+                        <div class="below-items">
+                            <div class="timestamp">
+                                <p>
+                                    Posted on: <%= blogs[i].createdAt %>, <%= blogs[i].time %> %>
+                                </p>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="bttns-container">
+                                    <form action="/delete/<%= blogs[i].id %>" method="POST">
+                                        <button class="bttns del-btn">Delete</button>
+                                    </form>
+            
+                                    <a href="/edit/<%= blogs[i].id %>" class="bttns edit-btn">Edit</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <% } %>
-        </div>
+                <% } %>
+            </div>
+        </section>
 
     </div>
 </main>
