@@ -1,0 +1,738 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+header {
+    background-color: deepskyblue;
+    width: 100%;
+    height: 5rem;
+    padding: 2rem 5%;
+    border-bottom: 0.3rem solid navy; 
+    box-shadow: 0 0 0.7rem #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .tag a {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+header .links a {
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+header .links a:hover {
+    border-bottom: 0.15rem solid navy;
+    cursor: pointer;
+}
+
+#menu-icon {
+    display: none;
+}
+
+main.contents {
+    min-height: calc(100vh - 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contents-details {
+    min-height: calc(100vh - 10rem);
+    display: flex;
+    justify-content: center;
+
+}
+
+.details-container {
+    width: 90%;
+    padding: 5% 0 3%;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem 2rem;
+}
+
+.edit {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-form {
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    padding: 1.4rem;
+}
+
+.edit-form textarea {
+    resize: none;
+}
+
+.edit h2 {
+    margin-bottom: 1rem;
+}
+
+.edit form label {
+    margin-top: 1rem;
+}
+
+.outer-case {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-case {
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.btn-case button {
+    width: 7rem;
+    height: 2rem;
+    background-color: red;
+    color: #fff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.btn-case button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 1rem red;
+    cursor: pointer;
+}
+
+.cancel { 
+    width: 7rem;
+    height: 2rem;
+    background-color: #fff;
+    border: 0.15rem solid red;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.3rem 0.7rem;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cancel:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 1rem red;
+    cursor: pointer;
+}
+
+.edit-btnn {
+    width: 7rem;
+    height: 2.1rem;
+    background-color: orangered;
+    color: #fff;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    padding: 0.1rem;
+    text-decoration: none;
+    transition: .1s ease;
+}
+
+.edit-btnn:hover {
+    background-color: lightblue;
+    transform: scale(1.1);
+    color: navy;
+}
+
+.first-page, .no-post {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.welcome {
+    font-size: 2.2rem;
+}
+
+.container {
+    width: 50%;
+}
+
+.new-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.below-items {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.timestamp {
+    width: 70%;
+    height: 50%;
+}
+
+.timestamp p {
+    font-size: 0.8rem;
+}
+
+.create-post {
+    width: 80%;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    padding: 1.4rem;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 0.15rem solid navy;
+    outline: none;
+}
+
+form label {
+    font-size: 0.9rem;
+}
+
+.post-success {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post-success i {
+    font-size: 5rem;
+    color: limegreen;
+    margin: 0.8rem;
+}
+
+.post {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.blogs-container {
+    width: 50%;
+    margin: auto;
+}
+
+.blog-card {
+    background-color: lightgray;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-top-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.span-con {
+    display: flex;
+    align-items: center;
+}
+
+.blogs-container .blog-card span {
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.4rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-card .the-title {
+    margin: 1rem 0.6rem 0.7rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bttns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem;
+}
+
+.bttns-container .del-btn {
+    margin-right: 0.5rem;
+    background-color: red;
+    transition: .3s ease;
+}
+
+.bttns-container .del-btn:hover {
+    background-color: #fff;
+    color: red;
+    box-shadow: 0 0 0.7rem red;
+    cursor: pointer;
+}
+
+
+.bttns-container .edit-btn {
+    background-color: green;
+    transition: .3s ease;
+}
+
+.bttns-container .edit-btn:hover {
+    background-color: #fff;
+    color: green;
+    box-shadow: 0 0 0.7rem green;
+    cursor: pointer;
+}
+
+.bttns {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.11rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+#btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000;
+    background-color: peru;
+    border: none;
+    transition: .3s ease;
+}
+
+#btn:hover {
+    background-color: #fff;
+    border: 0.1rem solid peru;
+    cursor: pointer;
+}
+
+#bTitle {
+    margin-bottom: 1.3rem;
+}
+
+#bDescription {
+    resize: none;
+}
+
+.heading, p.fill { 
+    margin-bottom: 0.6rem;
+}
+
+.heading h1 {
+    font-size: 1.7rem;
+}
+
+p.fill {
+    font-size: 1rem;
+}
+
+footer {
+    height: 3rem;
+    width: 100%;
+    background-color: navy;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+footer p {
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+
+/* BREAKPOINTS */
+
+/* From 480px below */
+
+@media (max-width: 479px) {
+    #menu-icon {
+        display: block;
+        font-size: 1.7rem;
+    }
+
+    .nav-bar {
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        height: 15%;
+        background-color: navy;
+        padding-bottom: 1.5rem;
+    }
+
+    .nav-bar a {
+        display: block;
+    }
+
+    header .links a {
+        margin-left: 1.2rem;
+        font-size: 1rem;
+        margin-top: 0.7rem;
+        margin-bottom: 1rem;
+        color: #fff;
+        font-weight: 500;
+        border-bottom: .1rem solid #fff;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .welcome {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .heading h1 {
+        font-size: 1.5rem;
+    }
+
+    .post-success {
+        text-align: center;
+    }
+
+    .post-success h2 {
+        font-size: 1.3rem;
+    }
+
+    .post-success i {
+        font-size: 4rem;
+        margin: 0.7rem;
+    }
+
+    .blogs-container {
+        width: 80%;
+    }
+
+    .bttns {
+        font-size: 0.7rem;
+    }
+
+    .nav-bar.active {
+        display: block;
+    }
+
+    .blog-card .the-title h2 {
+        font-size: 1.2rem;
+    }
+
+    .descript p {
+        font-size: 0.9rem;
+    }
+
+    .post-title h1 {
+        font-size: 1.3rem;
+    }
+
+    .post h2 {
+        font-size: 1.3rem;
+    }
+
+    .edit, .btn-case {
+        width: 80%;
+    }
+
+    .no-post {
+        width: 80%;
+    }
+
+    .no-post h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .details-header {
+        margin: 0 1rem 1.5rem;
+    }
+
+    .edit-btnn {
+        width: 5rem;
+        height: 2rem;
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
+    .details-container {
+        width: 90%;
+        padding: 10% 0 3% 0;
+    }
+}
+
+
+/* Between 480px and 767px */
+
+@media (min-width: 480px) and (max-width: 767px){
+    
+    #menu-icon {
+        display: block;
+        font-size: 1.7rem;
+    }
+
+    .nav-bar {
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        height: 15%;
+        background-color: navy;
+        padding-bottom: 1.5rem;
+    }
+
+    .nav-bar a {
+        display: block;
+    }
+
+    header .links a {
+        margin-left: 2rem;
+        font-size: 1rem;
+        margin-top: 0.7rem;
+        margin-bottom: 1rem;
+        color: #fff;
+        font-weight: 500;
+        border-bottom: .1rem solid #fff;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .welcome {
+        font-size: 1.7rem;
+    }
+
+    .post-success h2 {
+        font-size: 1.3rem;
+    }
+
+    .post-success i {
+        font-size: 5rem;
+        margin: 0.7rem;
+    }
+
+    .blogs-container {
+        width: 70%;
+    }
+
+    .bttns {
+        font-size: 0.7rem;
+    }
+
+    .nav-bar.active {
+        display: block;
+    }
+
+    .blog-card .the-title h2 {
+        font-size: 1.3rem;
+    }
+
+    .descript p {
+        font-size: 1rem;
+    }
+
+    .post-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .edit, .btn-case {
+        width: 70%;
+    }
+
+    .no-post {
+        width: 70%;
+    }
+
+    .no-post h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+} 
+
+
+/* Between 768px and 1199px */
+
+@media (min-width: 768px) and (max-width: 1199px){
+
+    header .links a {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        width: 70%;
+    }
+
+    .welcome {
+        font-size: 1.85rem;
+    }
+
+    .post-success h2 {
+        font-size: 1.5rem;
+    }
+
+    .post-success i {
+        font-size: 5rem;
+        margin: 0.7rem;
+    }
+
+    .blogs-container {
+        width: 60%;
+    }
+
+    .bttns {
+        font-size: 0.8rem;
+    }
+
+    .blog-card .the-title h2 {
+        font-size: 1.3rem;
+    }
+
+    .descript p {
+        font-size: 1rem;
+    }
+
+    .post-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .edit {
+        width: 60%;
+    }
+
+    .btn-case {
+        width: 50%;
+    }
+
+    .no-post {
+        width: 70%;
+    }
+
+    .no-post h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+}
+
+
+/* Between 1200px and 1599px */
+
+@media (min-width: 1200px) and (max-width: 1599px){
+
+    header .links a {
+        font-size: 1rem;
+    }
+    
+    .welcome {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 60%;
+    }
+
+    .edit {
+        width: 50%;
+    }
+
+    .post h2 {
+        font-size: 1.3rem;
+    }
+
+    .blog-card .the-title h2 {
+        font-size: 1.2rem;
+    }
+
+    .descript p {
+        font-size: 0.9rem;
+    }
+
+    .post-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .no-post h2 {
+        font-size: 1.4rem;
+    }
+
+    .edit-btnn {
+        font-size: 0.9rem;
+        width: 6rem;
+    }
+
+    .post-descript p {
+        font-size: 0.9rem;
+    }
+
+    .bttns {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* Above 1600px */
+
+@media (max-width: 1600px) {
+    
+}

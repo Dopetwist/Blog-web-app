@@ -1,0 +1,33 @@
+
+<%- include("partials/header.ejs") %>
+
+<main class="contents">
+
+    <div class="container">
+        <div class="new-con">
+            <div class="heading">
+                <h1> Welcome to Dope Blog </h1>
+            </div>
+        
+            <p class="fill">Fill the form to create a post.</p>
+        
+            <div class="create-post">
+        
+                <form action="/create" method="POST">
+        
+                    <label for="blogTitle">Blog Title</label> <br>
+                    <input type="text" id="bTitle" name="blogTitle" placeholder="Your Title here..." required> 
+                    <br>
+                    <label for="blogDescription">Description</label> <br>
+                    <textarea name="blogDes" id="bDescription" rows="6" placeholder="Your Blog here..." required></textarea>
+                    <br>
+                    <input type="submit" value="PUBLISH" id="btn">
+                </form>
+        
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include("partials/footer.ejs") %>

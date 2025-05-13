@@ -1,0 +1,66 @@
+<%- include("partials/header.ejs") %>
+
+<main class="contents">
+    <div class="view-posts">
+        <div class="heading">
+           <% if (blogs.length < 1) { %>
+                <div class="no-post">
+                    <h2> You have no blog post yet, go to the Home page to create a new post!</h2>  
+                </div>
+            <% } else { %>
+                <div class="post">
+                    <h2>Your Blog Posts.</h2>
+                </div>
+           <% } %>
+        </div>
+
+        <!-- Displaying each Blog Post's Contents -->
+
+        <div class="blogs-container">
+            <% for (let i = 0; i < blogs.length; i++) { %>
+                <div class="blog-card">
+
+                    <div class="span-con">
+                        <span> 
+                            <%= i + 1 %>
+                        </span> 
+
+                        <div class="the-title">
+                            <h2> <%= blogs[i].title %> </h2>
+                        </div>
+                    </div>
+
+                    <div class="descript">
+                        <p> <%= blogs[i].description?.slice(0, 280) %>
+                            <% if (blogs[i].description?.length > 280) { %>
+                                ... <a href="/details/<%= blogs[i].id %>">View More</a> 
+                            <% } %>
+                        </p> 
+                        
+                    </div>
+
+                    <div class="below-items">
+                        <div class="timestamp">
+                            <p>
+                                Posted on: <%= blogs[i].createdAt %>, <%= blogs[i].time %> %>
+                            </p>
+                        </div>
+
+                        <div class="buttons">
+                            <div class="bttns-container">
+                                <form action="/delete/<%= blogs[i].id %>" method="POST">
+                                    <button class="bttns del-btn">Delete</button>
+                                </form>
+        
+                                <a href="/edit/<%= blogs[i].id %>" class="bttns edit-btn">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+    </div>
+</main>
+
+<%- include("partials/footer.ejs") %>
