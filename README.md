@@ -15,13 +15,17 @@ A full-stack web application that allows users to create blog posts and view all
 * Backend - Node.js, Express.js.
 * Templating Engine - EJS (Embedded JavaScript)
 
-## Getting started
+# Getting started
 
-* Clone the repository
+## Clone the repository
   git clone https://github.com/your-username/blog-web-app.git
   cd blog-web-app
-* Install Dependencies - use `npm install`
-* Run the app - npm install nodemon (if not installed already)
+
+## Install Dependencies
+  Install all dependencies using `npm install`
+  
+## Run the app 
+  npm install nodemon (if not installed already)  
   On the terminal, run `nodemon index.js` to start the server.
 
 ## Future Improvements
