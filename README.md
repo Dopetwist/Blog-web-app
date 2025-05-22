@@ -31,6 +31,6 @@ A full-stack web application that allows users to create blog posts and view all
 * Authenticate users using bcrypt and sessions.
 * Dark Mode Toggle.
 
-## Contributions
+## Contributing
 
-Collaborations are welcome.
+Pull requests and collaborations are welcome. For major changes, please open an issue first.
