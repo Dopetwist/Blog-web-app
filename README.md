@@ -18,15 +18,15 @@ A full-stack web application that allows users to create blog posts and view all
 # Getting started
 
 ## Clone the repository
-  git clone https://github.com/your-username/blog-web-app.git
+  git clone https://github.com/your-username/blog-web-app.git   
   cd blog-web-app
 
 ## Install Dependencies
   Install all dependencies using `npm install`
   
 ## Run the app 
-  npm install nodemon (if not installed already)  
-  On the terminal, run `nodemon index.js` to start the server.
+ If nodemon is not installed on your editor, firstly run `npm install nodemon`  
+ Then run `nodemon index.js` to start the server.
 
 ## Future Improvements
 
