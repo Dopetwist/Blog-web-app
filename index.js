@@ -1,9 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import env from "dotenv";
+import pg from "pg";
 
 
 const app = express();
 const port = 3000;
+
+env.config();
 
 
 // Middlewares
@@ -11,6 +15,19 @@ const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
+
+
+// Database connection
+
+const db = new pg.Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT
+});
+
+db.connect();
 
 
 let listOfBlogs = [];
@@ -33,7 +50,7 @@ app.get("/create", (req, res) => {
 // Route to view list of blog posts
 
 app.get("/view", (req, res) => {
-    res.render("bloglist.ejs", {blogs: listOfBlogs});
+    res.render("bloglist.ejs", { blogs: listOfBlogs });
 });
 
 
@@ -43,7 +60,7 @@ app.get("/details/:id", (req, res) => {
     const postID = req.params.id;
     const blogDetails = listOfBlogs.find((blog) => blog.id === parseInt(postID));
 
-    res.render("details.ejs", {blogDetails: blogDetails});
+    res.render("details.ejs", { blogDetails: blogDetails });
 });
 
 
@@ -103,7 +120,7 @@ app.post("/edit/:id", (req, res) => {
     const editBlog = listOfBlogs.findIndex((blog) => blog.id === editID);
 
     if (editBlog !== -1) {
-        listOfBlogs[editBlog] = {id: editID, title, description, blogs};
+        listOfBlogs[editBlog] = { id: editID, title, description, blogs };
     
         res.redirect("/view");
     } else {
