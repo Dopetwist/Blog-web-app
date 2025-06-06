@@ -30,7 +30,6 @@ A full-stack web application that allows users to create blog posts and view all
 
 ## Future Improvements
 
-* Persist and store blog posts using a database.
 * Create Register and Login Pages.
 * Authenticate users using bcrypt and sessions.
 * Dark Mode Toggle.
