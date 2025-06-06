@@ -12,7 +12,7 @@ env.config();
 
 // Middlewares
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
@@ -49,7 +49,12 @@ app.get("/create", (req, res) => {
 
 // Route to view list of blog posts
 
-app.get("/view", (req, res) => {
+app.get("/view", async (req, res) => {
+
+    const result = await db.query("SELECT * FROM posts");
+
+    listOfBlogs = result.rows;
+
     res.render("bloglist.ejs", { blogs: listOfBlogs });
 });
 
@@ -87,23 +92,26 @@ app.get("/edit/:id", (req, res) => {
 
 // Route to store details of a created blog post in an array and simultaneously displaying the success page
 
-app.post("/create", (req, res) => {
+app.post("/create", async (req, res) => {
     const titleInput = req.body.blogTitle;
     const desInput = req.body.blogDes;
+    const time = "06-06-2025";
     const msg = "Your post has been published successfully!";
 
-    const blogPostsObj = {
-        id: generateID(),
-        title: titleInput,
-        description: desInput,
-        createdAt: new Date().toDateString('en-US'), 
-        time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    };
+    // const blogPostsObj = {
+    //     id: generateID(),
+    //     title: titleInput,
+    //     description: desInput,
+    //     createdAt: new Date().toDateString('en-US'), 
+    //     time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    // };
 
-    listOfBlogs.push(blogPostsObj);
+    // listOfBlogs.push(blogPostsObj);
+
+    await db.query("INSERT INTO posts (title, article, created_at) VALUES ($1, $2, $3)", [titleInput, desInput, time])
 
     res.render("message.ejs", {
-        blogs: listOfBlogs,
+        // blogs: result.rows,
         message: msg
     });
 });
