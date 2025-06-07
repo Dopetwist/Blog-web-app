@@ -2,33 +2,35 @@
 
 <main class="contents">
     <div class="view-posts">
-        <div class="heading">
-           <% if (blogs.length < 1) { %>
-                <div class="no-post">
-                    <h2> You have no blog post yet, create a new post!</h2>  
-                </div>
-            <% } else { %>
-                <div class="post">
-                    <h2>Your Blog Posts.</h2>
-                </div>
-           <% } %>
-        </div>
+        <% if (locals.message) { %> 
+            <p class="error-text"> <%= message %> </p>
+        <% } else { %> 
+            <div class="heading">
+                <% if (blogs.length < 1) { %>
+                    <div class="no-post">
+                        <h2> You have no blog post yet, create a new post!</h2>  
+                    </div>    
+                <% } else { %>
+                    <div class="post">
+                        <h2>Your Blog Posts.</h2>
+                    </div>     
+                <% } %>
+            </div>
 
-        <!-- Displaying each Blog Post's Contents -->
-
-        <section id="blogs">
-            <div class="blogs-container">
-                <% if (locals.blogs) { %> 
+            <!-- Displaying each Blog Post's Contents -->
+             
+            <section id="blogs">
+                <div class="blogs-container">
                     <% blogs.forEach((post) => { %> 
                         <div class="blog-card">
                             <div class="span-con">
-                                <span> 
+                               <span> 
                                     <%= post.id %>
-                                </span> 
+                                </span>      
 
                                 <div class="the-title">
                                     <h2> <%= post.title %> </h2>
-                                </div>
+                                </div> 
                             </div>
 
                             <div class="descript">
@@ -36,8 +38,8 @@
                                     <% if (post.article?.length > 280) { %>
                                         ... <a href="/details/<%= post.id %>">View More</a> 
                                     <% } %>
-                                </p> 
-                            
+                                </p>
+                                
                             </div>
 
                             <div class="below-items">
@@ -52,16 +54,16 @@
                                         <form action="/delete/<%= post.id %>" method="POST">
                                             <button class="bttns del-btn">Delete</button>
                                         </form>
-                
+                    
                                         <a href="/edit/<%= post.id %>" class="bttns edit-btn">Edit</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <% }); %> 
-                <% } %> 
-            </div>
-        </section>
+                    <% }); %>
+                </div>
+            </section>
+        <% } %>
 
     </div>
 </main>

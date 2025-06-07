@@ -2,17 +2,21 @@
 
     <main class="contents-details">
         <div class="details-container">
-            <div class="details-header">
-                <div class="post-title">
-                    <h1> <%= blogDetails?.title %> </h1> 
+           <% if (locals.message) { %> 
+                <p class="error-text"> <%= message %> </p>
+            <% } else { %>
+                <div class="details-header">
+                    <div class="post-title">
+                        <h1> <%= blogDetails?.title %> </h1> 
+                    </div>
+                    
+                    <a href="/edit/<%= blogDetails.id %>" class="edit-btnn">EDIT</a>
                 </div>
-                
-                <a href="/edit/<%= blogDetails.id %>" class="edit-btnn">EDIT</a>
-            </div>
-    
-            <div class="post-descript">
-                <p> <%= blogDetails?.description %> </p>
-            </div>
+        
+                <div class="post-descript">
+                    <p> <%= blogDetails?.article %> </p>
+                </div>
+           <% } %> 
         </div>
     </main>
 
