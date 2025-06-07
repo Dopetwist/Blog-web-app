@@ -51,40 +51,48 @@ app.get("/create", (req, res) => {
 
 app.get("/view", async (req, res) => {
 
-    const result = await db.query("SELECT * FROM posts");
+    try {
+        const result = await db.query("SELECT * FROM posts");
 
-    listOfBlogs = result.rows;
+        listOfBlogs = result.rows;
 
-    res.render("bloglist.ejs", { blogs: listOfBlogs });
+        res.render("bloglist.ejs", { blogs: listOfBlogs });
+    } catch (error) {
+        res.render("bloglist.ejs", { message: "An error occured, please try again later." });
+        console.error(error);
+    }
 });
 
 
 // Route to display the full contents of a specific blog post
 
-app.get("/details/:id", (req, res) => {
-    const postID = req.params.id;
-    const blogDetails = listOfBlogs.find((blog) => blog.id === parseInt(postID));
+app.get("/details/:id", async (req, res) => {
+    try {
+        const postID = req.params.id;
 
-    res.render("details.ejs", { blogDetails: blogDetails });
+        const result = await db.query("SELECT * FROM posts WHERE id = $1", [postID]);
+
+        res.render("details.ejs", { blogDetails: result.rows[0] });
+    } catch (error) {
+        res.render("details.ejs", { message: "An error occured, please try again later." });
+        console.error(error);
+    }
 });
 
 
 // Route to get the edit page to edit a blog post
 
-app.get("/edit/:id", (req, res) => {
+app.get("/edit/:id", async (req, res) => {
 
     try {
-        const editID = parseInt(req.params.id);
-        const editBlog = listOfBlogs.find((blog) => blog.id === editID);
+        const editID = req.params.id;
+
+        const result = await db.query("SELECT * FROM posts WHERE id = $1", [editID]);
     
-        if (editBlog) {
-            res.render("edit.ejs", { editBlog });
-        } else {
-            res.status(404).send("Post not found!");
-        };
         
+        res.render("edit.ejs", { editBlog: result.rows[0] });
     } catch (error) {
-        console.log(error);
+        console.error(error);
     };
 
 });
