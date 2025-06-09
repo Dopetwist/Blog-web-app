@@ -106,20 +106,10 @@ app.post("/create", async (req, res) => {
     const time = "06-06-2025";
     const msg = "Your post has been published successfully!";
 
-    // const blogPostsObj = {
-    //     id: generateID(),
-    //     title: titleInput,
-    //     description: desInput,
-    //     createdAt: new Date().toDateString('en-US'), 
-    //     time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    // };
-
-    // listOfBlogs.push(blogPostsObj);
 
     await db.query("INSERT INTO posts (title, article, created_at) VALUES ($1, $2, $3)", [titleInput, desInput, time])
 
     res.render("message.ejs", {
-        // blogs: result.rows,
         message: msg
     });
 });
@@ -127,21 +117,29 @@ app.post("/create", async (req, res) => {
 
 // Route to update a blog post after an edit
 
-app.post("/edit/:id", (req, res) => {
-    const editID = parseInt(req.params.id);
-    const {title, description} = req.body;
-    const blogs = listOfBlogs;
+app.post("/edit/:id", async (req, res) => {
+    const editID = req.params.id;
+    const { title, description } = req.body;
 
+    try {
+        await db.query("UPDATE posts SET title = $1, article = $2 WHERE id = $3", [title, description, editID]);
 
-    const editBlog = listOfBlogs.findIndex((blog) => blog.id === editID);
-
-    if (editBlog !== -1) {
-        listOfBlogs[editBlog] = { id: editID, title, description, blogs };
-    
         res.redirect("/view");
-    } else {
-        res.status(404).send("Post not found!");
+    } catch (error) {
+        res.render("edit.ejs", { message: "An error occured, please try again later."});
+        console.error(error);
     }
+
+
+    // const editBlog = listOfBlogs.findIndex((blog) => blog.id === editID);
+
+    // if (editBlog !== -1) {
+    //     listOfBlogs[editBlog] = { id: editID, title, description, blogs };
+    
+    //     res.redirect("/view");
+    // } else {
+    //     res.status(404).send("Post not found!");
+    // }
 
 });
 
