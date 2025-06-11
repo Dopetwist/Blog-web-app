@@ -129,28 +129,22 @@ app.post("/edit/:id", async (req, res) => {
         res.render("edit.ejs", { message: "An error occured, please try again later."});
         console.error(error);
     }
-
-
-    // const editBlog = listOfBlogs.findIndex((blog) => blog.id === editID);
-
-    // if (editBlog !== -1) {
-    //     listOfBlogs[editBlog] = { id: editID, title, description, blogs };
-    
-    //     res.redirect("/view");
-    // } else {
-    //     res.status(404).send("Post not found!");
-    // }
-
 });
 
 
 // Route to Delete a blog post
 
-app.post("/delete/:id", (req, res) => {
+app.post("/delete/:id", async (req, res) => {
     const postID = req.params.id;
-    listOfBlogs = listOfBlogs.filter((blog) => blog.id !== parseInt(postID));
 
-    res.send("<script>window.location='/view'</script>");
+    try {
+        await db.query("DELETE FROM posts WHERE id = $1", [postID]);
+        
+        res.send("<script>window.location='/view'</script>");
+    } catch (error) {
+        res.render("bloglist.ejs", { message: "Error: Unable to delete post. Try again." });
+        console.error(error);
+    }
 });
 
 
