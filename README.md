@@ -26,7 +26,7 @@ A full-stack web application that allows users to create blog posts and view all
   
 ## Run the app 
  If nodemon is not installed on your editor, firstly run `npm install nodemon`  
- Then run `nodemon index.js` to start the server.
+ Then run `nodemon index.js` to start the development server.
 
 ## Future Improvements
 
