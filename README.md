@@ -19,7 +19,8 @@ A full-stack web application that allows users to create blog posts and view all
 # Getting started
 
 ## Clone the repository
-  git clone https://github.com/Dopetwist/Blog-web-app.git  
+  git clone https://github.com/Dopetwist/Blog-web-app.git   
+  
   cd Blog-web-app
 
 ## Install Dependencies
