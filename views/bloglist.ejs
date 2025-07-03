@@ -21,12 +21,12 @@
              
             <section id="blogs">
                 <div class="blogs-container">
-                    <% blogs.forEach((post) => { %> 
+                    <% blogs.forEach((post, index) => { %> 
                         <div class="blog-card">
                             <div class="span-con">
-                               <span> 
-                                    <%= post.id %>
-                                </span>      
+                                <span>
+                                    <p> <%= index + 1 %> </p> 
+                                </span>   
 
                                 <div class="the-title">
                                     <h2> <%= post.title %> </h2>
