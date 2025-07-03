@@ -33,21 +33,21 @@ db.connect();
 let listOfBlogs = [];
 
 
-// Route to get the home page
+// Home page
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
 
-// Route to get the Create form page to write a blog post
+// Display Create page
 
 app.get("/create", (req, res) => {
     res.render("create.ejs");
 });
 
 
-// Route to view list of blog posts
+// View list of blog posts
 
 app.get("/view", async (req, res) => {
 
