@@ -101,13 +101,11 @@ app.get("/edit/:id", async (req, res) => {
 // Route to store details of a created blog post in an array and simultaneously displaying the success page
 
 app.post("/create", async (req, res) => {
-    const titleInput = req.body.blogTitle;
-    const desInput = req.body.blogDes;
-    const time = "06-06-2025";
+    const { blogTitle, blogDes, time_zone } = req.body;
     const msg = "Your post has been published successfully!";
 
 
-    await db.query("INSERT INTO posts (title, article, created_at) VALUES ($1, $2, $3)", [titleInput, desInput, time])
+    await db.query("INSERT INTO posts (title, article, created_at) VALUES ($1, $2, $3)", [blogTitle, blogDes, time_zone])
 
     res.render("message.ejs", {
         message: msg
