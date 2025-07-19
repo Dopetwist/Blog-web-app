@@ -52,7 +52,15 @@ app.get("/create", (req, res) => {
 app.get("/view", async (req, res) => {
 
     try {
-        const result = await db.query("SELECT * FROM posts");
+        const query = `
+                    SELECT
+                        id,
+                        title,
+                        article,
+                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
+                    FROM posts
+                    `
+        const result = await db.query(query);
 
         listOfBlogs = result.rows;
 
@@ -102,10 +110,13 @@ app.get("/edit/:id", async (req, res) => {
 
 app.post("/create", async (req, res) => {
     const { blogTitle, blogDes, time_zone } = req.body;
+    const timestamp = new Date().toISOString();
     const msg = "Your post has been published successfully!";
 
+    const userTimeZone = time_zone || 'UTC'; // Defaults to 'UTC' if no time zone is detected
 
-    await db.query("INSERT INTO posts (title, article, created_at) VALUES ($1, $2, $3)", [blogTitle, blogDes, time_zone])
+
+    await db.query("INSERT INTO posts (title, created_at, time_zone, article) VALUES ($1, $2, $3, $4)", [blogTitle, timestamp, userTimeZone, blogDes])
 
     res.render("message.ejs", {
         message: msg
