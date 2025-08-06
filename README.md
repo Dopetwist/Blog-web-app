@@ -16,21 +16,25 @@ A full-stack web application that allows users to create blog posts and view all
 * Database - PostgreSQL
 * Templating Engine - EJS (Embedded JavaScript)
 
-# Getting started
+## Getting started
 
-## Clone the repository
-  git clone https://github.com/Dopetwist/Blog-web-app.git   
+1. Clone the repository
+
+   git clone https://github.com/Dopetwist/Blog-web-app.git   
   
-  cd Blog-web-app
+    cd Blog-web-app
 
-## Install Dependencies
-  Install all dependencies using `npm install`
+2. Install Dependencies
+
+   Install all dependencies using `npm install`
   
-## Run the app 
- If nodemon is not installed on your editor, firstly run `npm install nodemon`  
- Then run `nodemon index.js` to start the development server.   
+4. Run the app 
 
- Open `http://localhost:3000` in your browser.
+   If nodemon is not installed on your editor, firstly run `npm install nodemon`  
+
+   Then run `nodemon index.js` to start the development server.   
+
+ 6. Open `http://localhost:3000` in your browser.
 
 ## Future Improvements
 
