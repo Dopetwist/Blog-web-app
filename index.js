@@ -157,12 +157,6 @@ app.post("/delete/:id", async (req, res) => {
 });
 
 
-// Function to generate a random unique ID for each blog post
-
-function generateID() {
-    return Math.floor(Math.random() * 10000);
-};
-
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`); 
 });
