@@ -44,9 +44,17 @@
 
                             <div class="below-items">
                                 <div class="timestamp">
-                                    <p>
-                                        Posted on: <%= post.formatted_timestamp %>
-                                    </p>
+                                    <% if (locals.singleArray) { %> 
+                                        <% if (post.id === singleArray[0].id) { %> 
+                                            <p>
+                                                Updated on: <%= post.formatted_timestamp %>
+                                            </p>
+                                        <% } else { %> 
+                                            <p>
+                                                Posted on: <%= post.formatted_timestamp %>
+                                            </p>
+                                        <% } %> 
+                                    <% } %>  
                                 </div>
 
                                 <div class="buttons">

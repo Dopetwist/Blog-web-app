@@ -31,6 +31,7 @@ db.connect();
 
 
 let listOfBlogs = [];
+let singleArray = [];
 
 
 // Home page
@@ -127,17 +128,38 @@ app.post("/create", async (req, res) => {
 // Route to update a blog post after an edit
 
 app.post("/edit/:id", async (req, res) => {
-    const ditID = req.params.id;
+    const editID = req.params.id;
     const { title, description } = req.body;
 
     try {
         await db.query("UPDATE posts SET title = $1, article = $2 WHERE id = $3", [title, description, editID]);
 
-        const posts = await db.query("SELECT * FROM posts");
+        const query = `
+                    SELECT
+                        id,
+                        title,
+                        article,
+                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
+                    FROM posts
+                    `
 
-        listOfBlogs = posts;
+        const single = `
+                    SELECT
+                        id,
+                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
+                    FROM posts
+                    WHERE id = $1
+                    `
 
-        res.render("bloglist.ejs", { blogs: listOfBlogs });
+        const result = await db.query(query);
+
+        listOfBlogs = result.rows;
+
+        const singleResult = await db.query(single, [editID]);
+
+        singleArray = singleResult.rows;
+
+        res.render("bloglist.ejs", { blogs: listOfBlogs, singleArray });
     } catch (error) {
         console.error(error);
         return res.render("bloglist.ejs", { message: "An error occured, please try again later."});
