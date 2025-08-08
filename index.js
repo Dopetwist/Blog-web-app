@@ -127,16 +127,20 @@ app.post("/create", async (req, res) => {
 // Route to update a blog post after an edit
 
 app.post("/edit/:id", async (req, res) => {
-    const editID = req.params.id;
+    const ditID = req.params.id;
     const { title, description } = req.body;
 
     try {
         await db.query("UPDATE posts SET title = $1, article = $2 WHERE id = $3", [title, description, editID]);
 
-        res.redirect("/view");
+        const posts = await db.query("SELECT * FROM posts");
+
+        listOfBlogs = posts;
+
+        res.render("bloglist.ejs", { blogs: listOfBlogs });
     } catch (error) {
-        res.render("edit.ejs", { message: "An error occured, please try again later."});
         console.error(error);
+        return res.render("bloglist.ejs", { message: "An error occured, please try again later."});
     }
 });
 
