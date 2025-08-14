@@ -44,9 +44,17 @@
 
                             <div class="below-items">
                                 <div class="timestamp">
-                                    <p>
-                                        Posted on: <%= post.formatted_timestamp %>
-                                    </p>
+                                    
+                                    <% if (!post.updated_timestamp) { %> 
+                                        <p>
+                                            Posted on: <%= post.formatted_timestamp %>
+                                        </p>
+                                    <% } else { %>
+                                        <p>
+                                            Updated on: <%= post.updated_timestamp %>
+                                        </p>
+                                    <% } %>
+                                   
                                 </div>
 
                                 <div class="buttons">
