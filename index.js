@@ -31,7 +31,6 @@ db.connect();
 
 
 let listOfBlogs = [];
-let singleArray = [];
 
 
 // Home page
@@ -58,7 +57,8 @@ app.get("/view", async (req, res) => {
                         id,
                         title,
                         article,
-                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
+                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp,
+                        TO_CHAR(updated_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS updated_timestamp
                     FROM posts
                     `
         const result = await db.query(query);
@@ -130,36 +130,12 @@ app.post("/create", async (req, res) => {
 app.post("/edit/:id", async (req, res) => {
     const editID = req.params.id;
     const { title, description } = req.body;
+    const updatedTime = new Date().toISOString();
 
     try {
-        await db.query("UPDATE posts SET title = $1, article = $2 WHERE id = $3", [title, description, editID]);
+        await db.query("UPDATE posts SET title = $1, article = $2, updated_at = $3 WHERE id = $4", [title, description, updatedTime, editID]);
 
-        const query = `
-                    SELECT
-                        id,
-                        title,
-                        article,
-                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
-                    FROM posts
-                    `
-
-        const single = `
-                    SELECT
-                        id,
-                        TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp
-                    FROM posts
-                    WHERE id = $1
-                    `
-
-        const result = await db.query(query);
-
-        listOfBlogs = result.rows;
-
-        const singleResult = await db.query(single, [editID]);
-
-        singleArray = singleResult.rows;
-
-        res.render("bloglist.ejs", { blogs: listOfBlogs, singleArray });
+        res.redirect("/view");
     } catch (error) {
         console.error(error);
         return res.render("bloglist.ejs", { message: "An error occured, please try again later."});

@@ -4,7 +4,8 @@
     <div class="edit">
         <% if (locals.message) { %> 
             <p class="error-text"> <%= message %> </p>
-        <% } else { %> 
+        <% } else { %>
+
             <h2>Edit your Post</h2>
 
             <form action="/edit/<%= editBlog.id %>" method="POST" class="edit-form">
@@ -22,6 +23,7 @@
                     </div>
                 </div>
             </form>
+            
         <% } %> 
 
     </div>
