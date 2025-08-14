@@ -31,7 +31,6 @@ db.connect();
 
 
 let listOfBlogs = [];
-let singleArray = [];
 
 
 // Home page
