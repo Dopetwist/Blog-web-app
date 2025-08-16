@@ -60,6 +60,7 @@ app.get("/view", async (req, res) => {
                         TO_CHAR(created_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS formatted_timestamp,
                         TO_CHAR(updated_at AT TIME ZONE time_zone, 'YYYY/MM/DD HH12:MI AM') AS updated_timestamp
                     FROM posts
+                    ORDER BY formatted_timestamp DESC
                     `
         const result = await db.query(query);
 
